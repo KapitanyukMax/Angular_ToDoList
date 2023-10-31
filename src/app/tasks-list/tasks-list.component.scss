@@ -1,0 +1,20 @@
+.list-container {
+  border-radius: 5px;
+  overflow: hidden;
+
+  ul.tasks-list {
+    margin: 0;
+    padding: 0;
+  
+    li {
+      margin: 0;
+      padding: 10px;
+      list-style: none;
+      background-color: rgb(165,204,218);
+  
+      &:nth-child(even) {
+        background-color: rgb(173,216,230);
+      }
+    }
+  }
+}
