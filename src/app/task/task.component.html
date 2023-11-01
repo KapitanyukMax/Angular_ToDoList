@@ -1,9 +1,0 @@
-<button type="button">
-  <button type="button">
-    <img *ngIf="task?.status === 'finished'" src="../../images/checked.png" alt="checked">
-    <img *ngIf="task?.status === 'unfinished'" src="../../images/unchecked.png" alt="unchecked">
-  </button>
-  <span *ngIf="task?.priority" class="priority-important">!</span>
-  <span [class.finished]="task?.status === 'finished'" class="task-title">{{task?.title}}</span>
-  <span *ngIf="task?.deadline" class="task-deadline">{{task?.deadline?.toDateString()}}</span>
-</button>

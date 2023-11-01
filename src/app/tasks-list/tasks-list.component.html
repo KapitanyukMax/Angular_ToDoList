@@ -1,7 +1,19 @@
 <div class="list-container">
   <ul class="tasks-list">
-    <li *ngFor="let task of tasks">
-      <app-task [task]="task"></app-task>
+    <li *ngFor="let task of tasks" [class.selected]="task === selectedTask">
+      <button type="button" class="select-task-btn" (click)="onSelect(task)">
+        <button type="button" class="check-task-btn" (click)="onCheck(task)">
+          <img *ngIf="task?.status === 'finished'" src="../../assets/images/checked.png" alt="checked">
+          <img *ngIf="task?.status === 'unfinished'" src="../../assets/images/unchecked.png" alt="unchecked">
+        </button>
+        <span *ngIf="task?.priority" class="priority-important">!</span>
+        <span [class.finished]="task?.status === 'finished'" class="task-title">{{task?.title}}</span>
+        <span *ngIf="task?.deadline" class="task-deadline">{{task?.deadline?.toDateString()}}</span>
+      </button>
     </li>
   </ul>
+</div>
+
+<div class="btn-container">
+  <button [disabled]="!selectedTask" type="button" (click)="onRemove(selectedTask)" class="remove-task-btn">Remove selected task</button>
 </div>

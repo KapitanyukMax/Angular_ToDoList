@@ -1,20 +1,93 @@
-.list-container {
+%container {
   border-radius: 5px;
   overflow: hidden;
+}
+
+%btn-reset {
+  border: none;
+  background-color: transparent;
+}
+
+.list-container {
+  @extend %container;
 
   ul.tasks-list {
     margin: 0;
     padding: 0;
-  
+
     li {
       margin: 0;
       padding: 10px;
       list-style: none;
-      background-color: rgb(165,204,218);
-  
+      background-color: #a5ccda;
+
       &:nth-child(even) {
-        background-color: rgb(173,216,230);
+        background-color: #add8e6;
       }
+
+      &.selected {
+        background-color: #3a6a7a;
+        color: white;
+      }
+
+      button.select-task-btn {
+        @extend %btn-reset;
+
+        width: 100%;
+        text-align: left;
+
+        button.check-task-btn {
+          @extend %btn-reset;
+        }
+
+        .priority-important {
+          margin-left: 5px;
+          color: darkred;
+        }
+
+        .task-title {
+          margin: 0 15px;
+          font-size: 12pt;
+
+          &.finished {
+            text-decoration: line-through;
+          }
+        }
+
+        .task-deadline {
+          margin: 0 5px;
+          padding: 0 5px;
+          border-radius: 3px;
+          background-color: #7899a5;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.btn-container {
+  @extend %container;
+
+  width: fit-content;
+  margin: 10px 0;
+
+  .remove-task-btn {
+    @extend %btn-reset;
+
+    padding: 10px;
+
+    background-color: darkred;
+    color: white;
+
+    &:disabled {
+      background-color: lightcoral;
+      color: lightgray;
+    }
+
+    &:enabled:active {
+      background-color: lightcoral;
+      color: black;
     }
   }
 }
